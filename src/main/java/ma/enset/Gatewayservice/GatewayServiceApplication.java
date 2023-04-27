@@ -17,15 +17,15 @@ public class GatewayServiceApplication {
 	/**
 	 * Static routes configuration
 	 */
-
-
-	//@Bean
+//	@Bean
 	RouteLocator getWayStaticRoutes(RouteLocatorBuilder builder){
 		return builder.routes()
 				.route((r1)-> r1.path("/customers/**").uri("lb://CUSTOMER-SERVICE"))
-				.route(r2-> r2.path("/products/**").uri("lb://INVENTORY-SERVICE"))
+				.route((r2)-> r2.path("/products/**").uri("lb://INVENTORY-SERVICE"))
+//				.route((r3)-> r3.path("/bills/**").uri("lb://billing-service"))
                 .build();
 	}
+
 	/**
 	 *  Dynamic routes configration
 	 */
@@ -35,7 +35,11 @@ public class GatewayServiceApplication {
 		return  new DiscoveryClientRouteDefinitionLocator(rDC,dLP);
 	}
 
+
+
+
 }
+
 
 
 
